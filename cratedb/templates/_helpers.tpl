@@ -24,6 +24,12 @@ If release name contains chart name it will be used as a full name.
 {{- end -}}
 {{- end -}}
 
+{{- define "cratedb.initialMasterNodes" }}
+  {{- range $i := until (int .Values.clusterSize) -}}
+    {{- if $i }},{{ end }}crate-{{ $i -}}
+  {{- end }}
+{{- end }}
+
 {{/*
 Create chart name and version as used by the chart label.
 */}}
