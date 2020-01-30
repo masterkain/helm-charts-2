@@ -26,7 +26,7 @@ If release name contains chart name it will be used as a full name.
 
 {{- define "cratedb.initialMasterNodes" }}
   {{- range $i := until (int .Values.clusterSize) -}}
-    {{- if $i }},{{ end }}crate-{{ $i -}}
+    {{- if $i }},{{ end }}cratedb-{{ $i -}}
   {{- end }}
 {{- end }}
 
