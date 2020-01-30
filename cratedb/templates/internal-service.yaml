@@ -16,7 +16,7 @@ metadata:
 {{ toYaml .Values.labels | indent 4 }}
 {{- end }}
 spec:
-  type: ClusterIP
+  type: None
   ports:
     - port: {{ .Values.internalService.port }}
       name: {{ .Values.internalService.portName }}
