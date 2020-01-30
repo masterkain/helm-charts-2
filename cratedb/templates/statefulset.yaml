@@ -59,9 +59,9 @@ spec:
           # using the SRV records provided by Kubernetes.
           command:
             - /docker-entrypoint.sh
+            - -Ccluster.initial_master_nodes={{ .Values.cratedbConfig.discovery.zen.minimumMasterNodes }}
             - -Ccluster.name=${CLUSTER_NAME}
-            - -Cdiscovery.zen.minimum_master_nodes={{ .Values.cratedbConfig.discovery.zen.minimumMasterNodes }}
-            - -Cdiscovery.zen.hosts_provider={{ .Values.cratedbConfig.discovery.zen.hostsProvider }}
+            - -Cdiscovery.seed_providers=srv
             - -Cdiscovery.srv.query=_crate-internal._tcp.{{ .Values.internalService.name }}.${NAMESPACE}.svc.cluster.local
             - -Cgateway.recover_after_nodes={{ .Values.cratedbConfig.discovery.recoverAfterNodes }}
             - -Cgateway.expected_nodes=${EXPECTED_NODES}
